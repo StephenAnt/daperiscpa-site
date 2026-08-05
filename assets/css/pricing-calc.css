@@ -1,0 +1,287 @@
+/* ==========================================================================
+   Pricing calculator — CPA Service Tiers
+   All rules are scoped under .pricing-calc so nothing leaks into the rest
+   of the site (and site styles don't leak in here).
+   ========================================================================== */
+
+.pricing-calc {
+  --green: #274e13;
+  --green-dark: #1a3608;
+  --green-accent: #3d7b1f;
+  --green-light: #e8f0e3;
+  --green-lighter: #f5f9f2;
+  --white: #ffffff;
+  --cream: #faf8f4;
+  --grey-50: #fafafa;
+  --grey-100: #f4f4f4;
+  --grey-200: #e5e5e5;
+  --grey-400: #999999;
+  --grey-600: #555555;
+  --grey-800: #2a2a2a;
+  --radius: 10px;
+  --shadow: 0 2px 12px rgba(39,78,19,0.08);
+  --shadow-strong: 0 8px 24px rgba(39,78,19,0.18);
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--grey-800);
+  line-height: 1.5;
+  text-align: left;
+}
+
+.pricing-calc * { box-sizing: border-box; }
+
+.pricing-calc .calculator {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+.pricing-calc .header {
+  background: var(--green);
+  color: var(--white);
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: 28px 24px;
+  text-align: center;
+}
+.pricing-calc .header h3 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--white);
+  font-family: inherit;
+  line-height: 1.3;
+}
+
+/* Controls panel */
+.pricing-calc .controls {
+  background: var(--cream);
+  border: 1px solid var(--grey-200);
+  border-top: none;
+  padding: 24px;
+}
+
+.pricing-calc .control-group { margin-bottom: 0; }
+.pricing-calc .control-group label.group-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--green);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Segmented buttons */
+.pricing-calc .segmented {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.pricing-calc .segmented button {
+  flex: 1;
+  min-width: 130px;
+  padding: 12px 16px;
+  border: 2px solid var(--grey-200);
+  background: var(--white);
+  color: var(--grey-800);
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+.pricing-calc .segmented button:hover { border-color: var(--green-accent); }
+.pricing-calc .segmented button.active {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--white);
+}
+
+.pricing-calc .scope-line {
+  text-align: center;
+  margin: 16px auto 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--grey-800);
+}
+.pricing-calc .scope-form {
+  display: block;
+  margin-top: 2px;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--grey-600);
+  font-style: italic;
+}
+
+/* Tier cards */
+.pricing-calc .tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  padding: 24px;
+  background: var(--cream);
+  border: 1px solid var(--grey-200);
+  border-top: none;
+}
+@media (max-width: 900px) {
+  .pricing-calc .tiers { grid-template-columns: 1fr; }
+}
+
+.pricing-calc .tier {
+  background: var(--white);
+  border: 2px solid var(--grey-200);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.pricing-calc .tier:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+.pricing-calc .tier.featured {
+  border-color: var(--green);
+  box-shadow: var(--shadow-strong);
+  transform: scale(1.02);
+  background: var(--green-lighter);
+}
+@media (max-width: 900px) {
+  .pricing-calc .tier.featured { transform: none; }
+}
+
+.pricing-calc .entity-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--green-accent);
+  margin-bottom: 6px;
+}
+
+.pricing-calc .tier-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--grey-800);
+  margin-bottom: 4px;
+  font-family: Georgia, serif;
+}
+
+.pricing-calc .tier-desc {
+  font-size: 13px;
+  color: var(--grey-600);
+  margin-bottom: 20px;
+  min-height: 20px;
+}
+
+.pricing-calc .price-block { margin-bottom: 20px; }
+.pricing-calc .price-lead {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--grey-600);
+  margin-bottom: 4px;
+}
+.pricing-calc .price {
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--grey-800);
+  line-height: 1;
+  letter-spacing: -0.5px;
+  font-family: Georgia, serif;
+}
+.pricing-calc .price-suffix {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--grey-600);
+}
+
+.pricing-calc .divider {
+  height: 1px;
+  background: var(--grey-200);
+  margin: 20px 0;
+}
+.pricing-calc .tier.featured .divider { background: #d8e5d1; }
+
+.pricing-calc .features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  flex-grow: 1;
+}
+.pricing-calc .features li {
+  padding: 6px 0 6px 24px;
+  font-size: 13px;
+  color: var(--grey-800);
+  position: relative;
+  line-height: 1.45;
+  border: 0;
+}
+.pricing-calc .features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  color: var(--green-accent);
+  font-weight: 700;
+}
+.pricing-calc .features li.muted { color: var(--grey-400); }
+.pricing-calc .features li.muted::before {
+  content: "–";
+  color: var(--grey-400);
+}
+
+/* Card button */
+.pricing-calc .card-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: var(--green);
+  color: var(--white);
+  padding: 12px 0;
+  border-radius: 24px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+.pricing-calc .card-btn:hover { background: var(--green-dark); }
+.pricing-calc .tier:not(.featured) .card-btn {
+  background: var(--grey-200);
+  color: var(--grey-800);
+}
+.pricing-calc .tier:not(.featured) .card-btn:hover {
+  background: var(--grey-400);
+  color: var(--white);
+}
+
+/* Footer */
+.pricing-calc .calc-footer {
+  background: var(--cream);
+  border: 1px solid var(--grey-200);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: 18px 24px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--grey-600);
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .pricing-calc .header h3 { font-size: 22px; }
+  .pricing-calc .tiers,
+  .pricing-calc .controls { padding: 20px 16px; }
+  .pricing-calc .price { font-size: 30px; }
+}
