@@ -40,22 +40,25 @@ Then open <http://localhost:8000>.
 
 ## Publish to GitHub Pages
 
-1. Create a new repository on GitHub (e.g. `daperiscpa-site`).
-2. Push this folder to it:
+This folder is already a git repository with everything committed on the `main` branch. You only need to create the GitHub repo and push.
+
+**1. Create the repository.** Go to <https://github.com/new>. Name it `daperiscpa-site`, leave it Public, and do **not** tick "Add a README" — this folder already has one.
+
+**2. Push.** Copy your new repo's URL, then run this from the site folder (replace `YOUR-USERNAME`):
 
 ```bash
-git init && git add -A && git commit -m "Initial site" && git branch -M main
+cd "/Users/stephen/Documents/Claude Code/daperiscpa-site" && git remote add origin https://github.com/YOUR-USERNAME/daperiscpa-site.git && git push -u origin main
 ```
 
-3. Add your repo as the remote and push:
+GitHub will ask for a username and password. The password is **not** your account password — it's a Personal Access Token. Create one at <https://github.com/settings/tokens> → Generate new token (classic) → tick the `repo` scope → copy it and paste it as the password.
 
-```bash
-git remote add origin https://github.com/YOUR-USERNAME/daperiscpa-site.git && git push -u origin main
-```
+If you'd rather avoid tokens, install GitHub Desktop from <https://desktop.github.com>, choose **Add Existing Repository**, point it at this folder, and click Publish.
 
-4. In the repo: **Settings → Pages → Source: Deploy from a branch → `main` / `(root)`**.
-5. Under **Settings → Pages → Custom domain**, enter `www.daperiscpa.com` and tick **Enforce HTTPS**.
-6. At your DNS provider, point `www` to GitHub:
+**3. Turn on Pages.** In the repo: **Settings → Pages → Source: Deploy from a branch → `main` / `(root)`**.
+
+**4. Custom domain.** Under **Settings → Pages → Custom domain**, enter `www.daperiscpa.com` and tick **Enforce HTTPS**.
+
+**5. DNS.** At your DNS provider, point `www` to GitHub:
 
 ```
 CNAME   www   YOUR-USERNAME.github.io
@@ -70,6 +73,41 @@ For the apex domain (`daperiscpa.com`) add four A records pointing to `185.199.1
 ## Editing
 
 Pages are plain HTML. To change wording, open the relevant `index.html`, find the text, edit it, save, commit. Colors, fonts, and spacing all live in `assets/css/style.css` under `:root` at the top.
+
+---
+
+## SEO
+
+Each page carries a unique `<title>` and meta description (110–160 characters), a canonical URL, and exactly one `<h1>`.
+
+**Structured data (JSON-LD)** is embedded in every page:
+
+| Schema | Where | What it does |
+|---|---|---|
+| `AccountingService` / `ProfessionalService` | all pages | Firm identity, contact, service area, social profiles |
+| `WebSite` | all pages | Site-level identity |
+| `Person` | homepage, articles | Establishes Stephen as a named, credentialed author |
+| `FAQPage` | homepage | Makes the FAQ eligible for expandable results in Google |
+| `Service` | 4 service pages | Describes each service and its provider |
+| `BlogPosting` | 16 articles | Headline, description, publish date, author, publisher |
+| `BreadcrumbList` | all inner pages | Shows a breadcrumb trail in search results |
+| `ContactPage` | Schedule page | Marks it as the contact route |
+
+**Also included:** Open Graph and Twitter Card tags with a 1200×630 share image; visible breadcrumbs on inner pages; machine-readable `<time datetime>` on article bylines; a sitemap with per-URL `lastmod`, `changefreq`, and `priority`; `robots.txt`; and a custom `404.html`.
+
+### After you go live
+
+1. Add the site at <https://search.google.com/search-console>, verify ownership, and submit `https://www.daperiscpa.com/sitemap.xml`.
+2. Run a few pages through the <https://search.google.com/test/rich-results> to confirm the FAQ and Article results are picked up.
+3. Claim or update your Google Business Profile. For a local CPA firm that moves the needle more than anything on the site itself — and it's what drives map results.
+
+### Deliberately not included
+
+**Review / `aggregateRating` markup.** The testimonials are real, but Google ignores (and can penalize) review markup a business puts on its own site about itself. Your Google reviews already earn that visibility on the right surface. Leave this off.
+
+### One content note
+
+On the live Google Sites site, the article card for *"No Employer, No Benefits? Not True."* reuses the summary from the quarterly-estimated-taxes article — it talks about due dates and safe harbor, which isn't what that article is about. The card text was copied across as-is, but its meta description uses an accurate summary instead, so the two pages don't compete for the same snippet. Worth fixing the visible card text when you get a chance.
 
 ---
 
