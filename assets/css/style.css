@@ -327,6 +327,16 @@ p:last-child { margin-bottom: 0; }
 }
 .bio p { font-size: 1.05rem; }
 
+/* ---------- credential badges (Credly) ---------- */
+.badges {
+  display: flex; flex-wrap: wrap;
+  gap: 30px; justify-content: center; align-items: flex-start;
+}
+/* Credly's embed.js swaps each placeholder div for an iframe, so size both
+   states identically and the page never jumps as the badges load. */
+.badges > div, .badges > iframe { width: 150px; min-height: 270px; }
+.badges > iframe { border: 0; max-width: 100%; }
+
 /* ---------- articles ---------- */
 .article-list { display: grid; gap: 22px; }
 .article-item {

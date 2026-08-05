@@ -105,9 +105,13 @@ Each page carries a unique `<title>` and meta description (110–160 characters)
 
 **Review / `aggregateRating` markup.** The testimonials are real, but Google ignores (and can penalize) review markup a business puts on its own site about itself. Your Google reviews already earn that visibility on the right surface. Leave this off.
 
-### One content note
+### Fixed from the original
 
-On the live Google Sites site, the article card for *"No Employer, No Benefits? Not True."* reuses the summary from the quarterly-estimated-taxes article — it talks about due dates and safe harbor, which isn't what that article is about. The card text was copied across as-is, but its meta description uses an accurate summary instead, so the two pages don't compete for the same snippet. Worth fixing the visible card text when you get a chance.
+On the live Google Sites site, the article card for *"No Employer, No Benefits? Not True."* reused the summary from the quarterly-estimated-taxes article — it described due dates and safe harbor, which isn't that article's subject. The link was always correct; only the summary was wrong.
+
+It now reads: *"Going solo doesn't mean losing pre-tax health coverage or a retirement match. Here's how to deduct 100% of your premiums and pick the right retirement plan."*
+
+This is the one place the site's wording intentionally differs from the Google Sites original. The replacement lives in `BLURB_FIX` in the build script and is used for both the card on `/Articles/` and that page's meta description, so the two articles no longer compete for the same search snippet.
 
 ---
 
@@ -136,6 +140,7 @@ Article CTA blocks (`.post-cta`) are solid green with a white button, matching t
 - **Google Analytics** (`G-6B2Z1SBVY5`) on all 24 pages — same property as the Google Sites site, so traffic history stays continuous.
 - **YouTube walkthrough** on the Secure Client Portal page.
 - **LinkedIn, Instagram, and Google Reviews** links in the footer.
+- **Credly credential badges** (Intuit Client Advisory Services Foundations, QuickBooks Level 1 Certified, Intuit Bookkeeping Trained) on the CPA Services and Bookkeeping & Payroll pages. IDs live in `CREDLY_BADGES`; the shared `embed.js` is loaded once per page and handles all three.
 
 ### Editing prices
 
