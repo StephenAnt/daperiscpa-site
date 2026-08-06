@@ -135,11 +135,13 @@ p:last-child { margin-bottom: 0; }
   color: var(--white); text-decoration: none;
   font-family: var(--sans); font-weight: 700; font-size: 1.12rem;
   white-space: nowrap;
+  min-width: 0; flex: 1 1 auto; overflow: hidden;
 }
 .brand .mark {
   width: auto; height: 42px; flex: 0 0 auto;
   display: block;
 }
+.nav-toggle { flex: 0 0 auto; }
 
 .nav-toggle {
   margin-left: auto;
@@ -442,6 +444,8 @@ article.post p { font-size: 1.09rem; line-height: 1.68; color: var(--ink-soft); 
   .site-footer .foot-top { grid-template-columns: 1fr; gap: 30px; }
 
   .nav-toggle { display: block; }
+  .brand { font-size: 1rem; }
+  .brand-tag { display: none; }
   .site-nav {
     display: none;
     position: absolute; left: 0; right: 0; top: 100%;
