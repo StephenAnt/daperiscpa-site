@@ -134,7 +134,7 @@ Article CTA blocks (`.post-cta`) are solid green with a white button, matching t
 - **Logo** — `assets/images/logo.png`, used in the header and as the favicon on all 24 pages.
 - **Photo of Stephen** — `assets/images/stephen.jpg` in the About section, cropped 4:5 and optimized to 115 KB.
 - **Pricing calculator** — in the `#pricing` section of the homepage. Markup is in `index.html`; styles in `assets/css/pricing-calc.css`; prices and features in `assets/js/pricing-calc.js`.
-- **Jotform contact form** (`261037489685066`) on the Schedule page.
+- **Jotform contact form** (`262186870485165`) on the Schedule page.
 - **TaxDome portal** — `https://daperiscpa.taxdome.com/` on the Secure Client Portal page.
 - **Business Start Up Checklist** — links to the Google Drive file from the Business Entity page.
 - **Google Analytics** (`G-6B2Z1SBVY5`) on all 24 pages — same property as the Google Sites site, so traffic history stays continuous.
