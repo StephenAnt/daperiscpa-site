@@ -351,6 +351,10 @@ p:last-child { margin-bottom: 0; }
 }
 .article-item:hover { box-shadow: 0 12px 30px rgba(39,78,19,.1); transform: translateY(-2px); }
 .article-item h2 { font-size: clamp(1.3rem,2.4vw,1.72rem); margin-bottom: 10px; }
+.card-date {
+  display: block; font-family: var(--sans); font-size: .85rem;
+  color: var(--muted); margin-bottom: 12px;
+}
 .article-item p { font-size: 1.02rem; color: var(--ink-soft); margin-bottom: 14px; }
 .readmore { font-family: var(--sans); font-size: .92rem; font-weight: 500; color: var(--green); }
 
