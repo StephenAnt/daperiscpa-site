@@ -418,7 +418,7 @@ article.post p a:hover, article.post .lede a:hover { color: var(--ink); }
   line-height: 1.7;
 }
 .site-footer a { color: #fff; }
-.site-footer .foot-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; }
+.site-footer .foot-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
 .site-footer h4 {
   font-family: var(--sans); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
   color: rgba(255,255,255,.72); margin: 0 0 14px; font-weight: 500;
