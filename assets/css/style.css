@@ -54,6 +54,9 @@ section.tight { padding: 52px 0; }
 .bg-tint  { background: var(--green-tint); }
 .bg-green { background: var(--green); color: var(--white); }
 .bg-green h1, .bg-green h2, .bg-green h3, .bg-green p { color: var(--white); }
+.bg-green .checklist li { color: var(--white); border-bottom-color: rgba(255, 255, 255, 0.25); }
+.bg-green .checklist li::before { color: var(--white); }
+.bg-green a:not(.btn) { color: var(--white); text-decoration-color: rgba(255, 255, 255, 0.5); }
 
 /* ---------- type ---------- */
 h1, h2, h3, h4 {
