@@ -411,6 +411,16 @@ article.post p a:hover, article.post .lede a:hover { color: var(--ink); }
 .author-box h2 { font-size: 1.5rem; margin-bottom: 14px; }
 .author-box p { font-size: 1rem; }
 
+.related-articles {
+  margin: 30px 0 0; padding: 34px;
+  background: var(--cream); border: 1px solid var(--green-line); border-radius: var(--radius);
+}
+.related-articles h2 { font-size: 1.5rem; margin-bottom: 14px; }
+.related-articles ul { list-style: none; margin: 0; padding: 0; }
+.related-articles li { border-bottom: 1px solid var(--green-line); }
+.related-articles li:last-child { border-bottom: 0; }
+.related-articles li a { display: block; padding: 12px 0; font-family: var(--sans); font-weight: 500; }
+
 /* ---------- footer ---------- */
 .site-footer {
   background: var(--green);
