@@ -1,0 +1,132 @@
+/* ==========================================================================
+   After-tax yield calculator — Treasury vs. HYSA
+   All rules are scoped under .after-tax-calc so nothing leaks into the rest
+   of the site (and site styles don't leak in here). Same scoping approach
+   as pricing-calc.css.
+   ========================================================================== */
+
+.after-tax-calc {
+  --green: #274e13;
+  --green-dark: #1a3608;
+  --white: #ffffff;
+  --cream: #faf8f4;
+  --grey-200: #e5e5e5;
+  --grey-400: #999999;
+  --grey-600: #555555;
+  --grey-800: #2a2a2a;
+  --radius: 10px;
+  --shadow: 0 2px 12px rgba(39,78,19,0.08);
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--grey-800);
+  line-height: 1.5;
+  text-align: left;
+  max-width: 720px;
+  margin: 32px auto;
+  background: var(--cream);
+  border: 1px solid var(--grey-200);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 24px;
+}
+
+.after-tax-calc * { box-sizing: border-box; }
+
+.after-tax-calc h3 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green-dark);
+  font-family: inherit;
+  line-height: 1.3;
+}
+
+.after-tax-calc .calc-intro {
+  margin: 0 0 20px;
+  color: var(--grey-600);
+  font-size: 15px;
+}
+
+.after-tax-calc .calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.after-tax-calc label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--grey-800);
+}
+
+.after-tax-calc input[type="number"] {
+  font-family: inherit;
+  font-size: 16px;
+  padding: 10px 12px;
+  border: 1px solid var(--grey-200);
+  border-radius: 6px;
+  background: var(--white);
+  color: var(--grey-800);
+  width: 100%;
+}
+
+.after-tax-calc input[type="number"]:focus {
+  outline: 2px solid var(--green);
+  outline-offset: 1px;
+}
+
+.after-tax-calc .calc-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.after-tax-calc .calc-result {
+  background: var(--white);
+  border: 1px solid var(--grey-200);
+  border-radius: 8px;
+  padding: 14px 16px;
+  text-align: center;
+}
+
+.after-tax-calc .calc-result-label {
+  display: block;
+  font-size: 13px;
+  color: var(--grey-600);
+  margin-bottom: 4px;
+}
+
+.after-tax-calc .calc-result-value {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.after-tax-calc .calc-verdict {
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  background: var(--white);
+  border-left: 3px solid var(--green);
+  border-radius: 4px;
+  font-weight: 500;
+  min-height: 1.5em;
+}
+
+.after-tax-calc .calc-footnote {
+  margin: 0;
+  font-size: 12px;
+  color: var(--grey-400);
+}
+
+@media (max-width: 600px) {
+  .after-tax-calc .calc-grid,
+  .after-tax-calc .calc-results {
+    grid-template-columns: 1fr;
+  }
+}
