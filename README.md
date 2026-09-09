@@ -15,8 +15,8 @@ cpa-services/                           CPA Services overview
   bookkeeping-payroll/
   business-entity-advisory-setup/
   secure-client-portal/
-Articles/                               Article index + 16 article pages
-Schedule-a-Strategy-Session/
+articles/                               Article index + article pages
+schedule-a-strategy-session/
 assets/css/style.css                    All styling
 CNAME                                   Custom domain for GitHub Pages
 sitemap.xml, robots.txt, .nojekyll
@@ -73,6 +73,17 @@ For the apex domain (`daperiscpa.com`) add four A records pointing to `185.199.1
 ## Editing
 
 Pages are plain HTML. To change wording, open the relevant `index.html`, find the text, edit it, save, commit. Colors, fonts, and spacing all live in `assets/css/style.css` under `:root` at the top.
+
+### Path naming — lowercase only, always
+
+Every directory in this site is lowercase-kebab-case (`articles/`, `schedule-a-strategy-session/`, `cpa-services/business-entity-advisory-setup/`, etc.). The site briefly used title-case paths (`Articles/`, `Schedule-a-Strategy-Session/`) early on and was migrated off them — but this repo is worked on from a Mac, whose filesystem (APFS) is **case-insensitive**: `Articles/` and `articles/` are the same physical file on disk, even though git treats them as two different tracked paths.
+
+That mismatch is what let the old title-case paths quietly survive in git for months alongside their lowercase replacements: since both paths point at one real file locally, any edit to the real (lowercase) article silently overwrote whatever content git had on record for the title-case path too — which is why a title-case URL would occasionally reappear live serving duplicate content instead of the `noindex` redirect stub it was supposed to be. (Cleaned up in the commit that added this note — see git log if you need the history.)
+
+**Going forward:**
+- Never create a new directory that differs from an existing one only in case. Before adding one, check: `git ls-files | grep -i "<slug>"`.
+- If a page's URL slug ever needs to change, don't rely on a plain rename to drop the old path from git on this machine — case-only renames don't register as renames here. Use a two-step move (`git mv oldslug oldslug-tmp && git mv oldslug-tmp newslug`), or rename on a case-sensitive volume/CI runner, then verify with the same `git ls-files | grep -i` check that only one casing survived.
+- If you ever see a page misbehaving that "shouldn't be affected" by an edit you made elsewhere, check for this first: `git ls-files | awk '{print tolower($0)}' | sort | uniq -d` lists any remaining case-duplicate paths.
 
 ---
 
