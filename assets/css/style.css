@@ -496,3 +496,6 @@ article.post p a:hover, article.post .lede a:hover { color: var(--ink); }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* Visually matches h1 where a second heading was demoted from h1 to h2 for a single-H1 page */
+h2.h-lg { font-size: clamp(2.4rem, 5.4vw, 4.1rem); }
