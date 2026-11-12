@@ -198,13 +198,13 @@ p:last-child { margin-bottom: 0; }
   display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
   font-family: var(--sans); font-size: .82rem;
 }
-.crumbs li { display: flex; align-items: center; gap: 8px; }
+.crumbs li { display: flex; align-items: center; gap: 8px; min-width: 0; max-width: 100%; }
 .crumbs li + li::before { content: "/"; color: var(--muted); opacity: .6; }
 .crumbs a { color: var(--green); text-decoration: none; }
 .crumbs a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .crumbs [aria-current="page"] {
   color: var(--muted);
-  max-width: 46ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  min-width: 0; max-width: 46ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .crumb-bar + .hero { padding-top: 40px; }
 
