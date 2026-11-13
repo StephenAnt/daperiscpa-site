@@ -2,11 +2,22 @@
 <html lang="en-US">
 <head>
 <meta charset="utf-8">
+<script>
+/* Legacy-URL rescue: GitHub Pages is case-sensitive and can't send server
+   redirects, so old title-case URLs (/Articles/..., /Schedule-a-Strategy-Session)
+   land here. Send them to the lowercase page that exists today. */
+(function () {
+  var p = location.pathname, low = p.toLowerCase();
+  var map = { "/articles/quarterly-estimated-taxes-new-york/": "/articles/quarterly-estimated-taxes-guide/" };
+  if (low.slice(-1) !== "/" && low.indexOf(".") === -1) low += "/";
+  var dest = map[low] || (low !== p ? low : null);
+  if (dest && dest !== p) location.replace(dest + location.search + location.hash);
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page Not Found — Daperis CPA</title>
 <meta name="description" content="That page could not be found. Browse CPA services or tax and accounting articles.">
-<link rel="canonical" href="https://www.daperiscpa.com/404.html">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#274e13">
 <meta name="author" content="Stephen Daperis, CPA">
 <meta property="og:site_name" content="Daperis CPA">
