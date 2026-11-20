@@ -285,3 +285,61 @@
   .pricing-calc .controls { padding: 20px 16px; }
   .pricing-calc .price { font-size: 30px; }
 }
+
+/* One-time planning session banner (full width, below the tier cards) */
+.pricing-calc .planning-banner {
+  background: var(--cream);
+  border: 1px solid var(--grey-200);
+  border-top: none;
+  padding: 0 24px 24px;
+}
+.pricing-calc .pb-card {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 32px;
+  align-items: center;
+  background: var(--white);
+  border: 2px solid var(--green);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+}
+.pricing-calc .pb-eyebrow {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--green-accent);
+  margin-bottom: 6px;
+}
+.pricing-calc .pb-title {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--grey-800);
+  font-family: Georgia, serif;
+  line-height: 1.3;
+}
+.pricing-calc .pb-lede {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: var(--grey-600);
+}
+.pricing-calc .pb-features { margin: 0; }
+.pricing-calc .pb-side { text-align: left; }
+.pricing-calc .pb-side .card-btn {
+  background: var(--green);
+  color: var(--white);
+}
+.pricing-calc .pb-side .card-btn:hover { background: var(--green-dark); }
+.pricing-calc .pb-note {
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: var(--grey-600);
+  font-style: italic;
+}
+@media (max-width: 900px) {
+  .pricing-calc .pb-card { grid-template-columns: 1fr; gap: 20px; padding: 24px 20px; }
+}
+@media (max-width: 600px) {
+  .pricing-calc .planning-banner { padding: 0 16px 20px; }
+}
